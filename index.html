@@ -2,90 +2,174 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SilverHorse – Кінноспортивний комплекс</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Кінноспортивний комплекс «Золоті Копита»</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header class="header">
-        <div class="container header-container">
-            <div class="logo">SilverHorse</div>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="#">Головна</a></li>
-                    <li><a href="#">Про комплекс</a></li>
-                    <li><a href="#">Послуги</a></li>
-                    <li><a href="#">Контакти</a></li>
+        <div class="container header__container">
+            <div class="logo">
+                <a href="/">🐎 <span>Золоті Копита</span></a>
+            </div>
+            <nav class="nav nav--desktop">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#about" class="nav__link">Про нас</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">Послуги</a></li>
+                    <li class="nav__item"><a href="#cards-section" class="nav__link">Напрямки</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Контакти</a></li>
                 </ul>
             </nav>
-            <button class="burger" aria-label="Меню">☰</button>
+            <button class="burger-btn" aria-label="Відкрити меню" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <main>
-        <section class="cards-section">
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu__header">
+            <button class="mobile-menu__close" aria-label="Закрити меню">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <ul class="mobile-nav__list">
+                <li class="mobile-nav__item"><a href="#about" class="mobile-nav__link">Про нас</a></li>
+                <li class="mobile-nav__item"><a href="#services" class="mobile-nav__link">Послуги</a></li>
+                <li class="mobile-nav__item"><a href="#cards-section" class="mobile-nav__link">Напрямки</a></li>
+                <li class="mobile-nav__item"><a href="#contact" class="mobile-nav__link">Контакти</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="main">
+        <section class="cta-hero" id="about">
             <div class="container">
-                <h1>Наші послуги</h1>
-                <div class="cards-container">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x200/2C5F2D/ffffff?text=Тренування" alt="Індивідуальні тренування">
-                        <h3>Індивідуальні тренування</h3>
-                        <p>Персональні заняття з досвідченим інструктором для вершників будь-якого рівня.</p>
-                        <button>Детальніше</button>
+                <div class="cta-hero__content">
+                    <h1>Кінний клуб «Золоті Копита»</h1>
+                    <p>Професійна верхова їзда, виїздка, контакт з кіньми та незабутні емоції</p>
+                    <button class="btn btn--primary" id="actionBtn">
+                        <span class="btn__text">Записатися на пробне заняття</span>
+                        <i class="fas fa-chevron-right btn__icon"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="cards-section" id="cards-section">
+            <div class="container">
+                <h2 class="section-title">Наші напрямки</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Всі</button>
+                    <button class="filter-btn" data-filter="riding">Верхова їзда</button>
+                    <button class="filter-btn" data-filter="dressage">Виїздка</button>
+                    <button class="filter-btn" data-filter="kids">Дитячі групи</button>
+                </div>
+
+                <div class="cards-grid" id="cardsGrid">
+                    <div class="card" data-category="riding">
+                        <img src="https://picsum.photos/id/145/400/250" alt="Кінь на прогулянці" class="card__img" loading="lazy">
+                        <div class="card__body">
+                            <h3 class="card__title">Прогулянка верхи</h3>
+                            <p class="card__desc">Мальовничі маршрути лісом та полями. Для новачків та досвідчених вершників.</p>
+                            <div class="card__footer">
+                                <button class="like-btn" data-liked="false">
+                                    <i class="far fa-heart"></i>
+                                    <span class="like-count">24</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x200/8B4513/ffffff?text=Прогулянки" alt="Прогулянки верхи">
-                        <h3>Прогулянки верхи</h3>
-                        <p>Чарівні кінні прогулянки мальовничими околицями для всіх охочих.</p>
-                        <button>Детальніше</button>
+                    <div class="card" data-category="dressage">
+                        <img src="https://picsum.photos/id/224/400/250" alt="Виїздка коня" class="card__img" loading="lazy">
+                        <div class="card__body">
+                            <h3 class="card__title">Виїздка (Дресура)</h3>
+                            <p class="card__desc">Складні елементи, робота в манежі, підготовка до змагань. Індивідуальні тренування.</p>
+                            <div class="card__footer">
+                                <button class="like-btn" data-liked="false">
+                                    <i class="far fa-heart"></i>
+                                    <span class="like-count">18</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x200/2C5F2D/ffffff?text=Догляд" alt="Догляд за кіньми">
-                        <h3>Догляд за кінями</h3>
-                        <p>Навчіться правильно доглядати за конем: чищення, сідлання, годування.</p>
-                        <button>Детальніше</button>
+                    <div class="card" data-category="kids">
+                        <img src="https://picsum.photos/id/20/400/250" alt="Дитина з конем" class="card__img" loading="lazy">
+                        <div class="card__body">
+                            <h3 class="card__title">Дитяча школа верхової їзди</h3>
+                            <p class="card__desc">Безпечне навчання дітей від 6 років, поні-клуб, ігрова форма та основи догляду.</p>
+                            <div class="card__footer">
+                                <button class="like-btn" data-liked="false">
+                                    <i class="far fa-heart"></i>
+                                    <span class="like-count">37</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x200/8B4513/ffffff?text=Змагання" alt="Змагання">
-                        <h3>Змагання</h3>
-                        <p>Регулярні турніри з конкуру та виїздки. Запрошуємо до участі!</p>
-                        <button>Детальніше</button>
+                    <div class="card" data-category="riding">
+                        <img src="https://picsum.photos/id/121/400/250" alt="Тренування з конем" class="card__img" loading="lazy">
+                        <div class="card__body">
+                            <h3 class="card__title">Індивідуальні тренування</h3>
+                            <p class="card__desc">Заняття з тренером, постановка техніки, підготовка до змагань будь-якого рівня.</p>
+                            <div class="card__footer">
+                                <button class="like-btn" data-liked="false">
+                                    <i class="far fa-heart"></i>
+                                    <span class="like-count">15</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x200/2C5F2D/ffffff?text=Оренда+стайні" alt="Оренда стайні">
-                        <h3>Оренда стайні</h3>
-                        <p>Затишні бокси для вашого коня з повним доглядом та годуванням.</p>
-                        <button>Детальніше</button>
+                    <div class="card" data-category="dressage">
+                        <img src="https://picsum.photos/id/174/400/250" alt="Виїздка на арені" class="card__img" loading="lazy">
+                        <div class="card__body">
+                            <h3 class="card__title">Групові заняття з виїздки</h3>
+                            <p class="card__desc">Покращення контролю коня, вивчення піафе, пасажу, робота у групі.</p>
+                            <div class="card__footer">
+                                <button class="like-btn" data-liked="false">
+                                    <i class="far fa-heart"></i>
+                                    <span class="like-count">12</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x200/8B4513/ffffff?text=Фотосесії" alt="Фотосесії з кіньми">
-                        <h3>Фотосесії з кіньми</h3>
-                        <p>Професійні фотосесії з нашими чудовими тваринами для незабутніх знімків.</p>
-                        <button>Детальніше</button>
+                    <div class="card" data-category="kids">
+                        <img src="https://picsum.photos/id/168/400/250" alt="Поні для дітей" class="card__img" loading="lazy">
+                        <div class="card__body">
+                            <h3 class="card__title">Канікули з конями</h3>
+                            <p class="card__desc">Літні табори, догляд за тваринами, веселі змагання для дітей.</p>
+                            <div class="card__footer">
+                                <button class="like-btn" data-liked="false">
+                                    <i class="far fa-heart"></i>
+                                    <span class="like-count">42</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x200/2C5F2D/ffffff?text=Дитячі+групи" alt="Навчання для дітей">
-                        <h3>Навчання для дітей</h3>
-                        <p>Спеціальна програма для маленьких вершників: безпечно та весело.</p>
-                        <button>Детальніше</button>
-                    </div>
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300x200/8B4513/ffffff?text=Ветеринар" alt="Ветеринарний догляд">
-                        <h3>Ветеринарний догляд</h3>
-                        <p>Огляд та лікування коней кваліфікованим ветеринаром на території комплексу.</p>
-                        <button>Детальніше</button>
-                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="container contact-section__inner">
+                <div class="contact-info">
+                    <h3>Контакти</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Київська обл., с. Конюшня, вул. Стаєнна 12</p>
+                    <p><i class="fas fa-phone-alt"></i> +38 (067) 123-45-67</p>
+                    <p><i class="far fa-clock"></i> Щодня 9:00 – 20:00</p>
+                </div>
+                <div class="contact-form-placeholder">
+                    <button class="btn btn--secondary" id="secondaryActionBtn">Отримати консультацію</button>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <p>© 2025 SilverHorse – Кінноспортивний комплекс. Усі права захищено.</p>
+        <div class="container footer__container">
+            <p>&copy; 2025 Кінноспортивний комплекс «Золоті Копита». Всі права захищені.</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
