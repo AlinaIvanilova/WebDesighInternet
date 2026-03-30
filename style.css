@@ -9,7 +9,7 @@ body {
     line-height: 1.5;
     color: #1e2a2f;
     background-color: #fefaf5;
-    transition: overflow 0.2s;
+    transition: overflow 0.2s; /* 1 */
 }
 
 body.no-scroll {

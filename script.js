@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // БУРГЕР-МЕНЮ (Повноекранне, блокування скролу) ==========
-    const burgerBtn = document.querySelector('.burger-btn');
+    const burgerBtn = document.querySelector('.burger-btn'); // знайти бургер меню (3)
     const mobileMenu = document.getElementById('mobileMenu');
-    const closeMenuBtn = document.querySelector('.mobile-menu__close');
+    const closeMenuBtn = document.querySelector('.mobile-menu__close'); //9
     const mobileLinks = document.querySelectorAll('.mobile-nav__link');
 
     function toggleMenu(open) {
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (targetId && targetId !== '#') {
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    e.preventDefault();
+                    e.preventDefault(); // скасовує стандартний перехід за посиланням
                     targetElement.scrollIntoView({ behavior: 'smooth' });
                     if (mobileMenu.classList.contains('open')) {
                         toggleMenu(false);
