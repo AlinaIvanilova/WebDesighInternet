@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // БУРГЕР-МЕНЮ (Повноекранне, блокування скролу) ==========
+    // БУРГЕР-МЕНЮ (Повноекранне, блокування скролу)
     const burgerBtn = document.querySelector('.burger-btn'); // знайти бургер меню (3)
     const mobileMenu = document.getElementById('mobileMenu');
     const closeMenuBtn = document.querySelector('.mobile-menu__close'); //9
