@@ -68,86 +68,10 @@
                     <button class="filter-btn" data-filter="kids">Дитячі групи</button>
                 </div>
 
-                <div class="cards-grid" id="cardsGrid">
-                    <div class="card" data-category="riding">
-                        <img src="https://picsum.photos/id/145/400/250" alt="Кінь на прогулянці" class="card__img" loading="lazy">
-                        <div class="card__body">
-                            <h3 class="card__title">Прогулянка верхи</h3>
-                            <p class="card__desc">Мальовничі маршрути лісом та полями. Для новачків та досвідчених вершників.</p>
-                            <div class="card__footer">
-                                <button class="like-btn" data-liked="false">
-                                    <i class="far fa-heart"></i>
-                                    <span class="like-count">24</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" data-category="dressage">
-                        <img src="https://picsum.photos/id/224/400/250" alt="Виїздка коня" class="card__img" loading="lazy">
-                        <div class="card__body">
-                            <h3 class="card__title">Виїздка (Дресура)</h3>
-                            <p class="card__desc">Складні елементи, робота в манежі, підготовка до змагань. Індивідуальні тренування.</p>
-                            <div class="card__footer">
-                                <button class="like-btn" data-liked="false">
-                                    <i class="far fa-heart"></i>
-                                    <span class="like-count">18</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" data-category="kids">
-                        <img src="https://picsum.photos/id/20/400/250" alt="Дитина з конем" class="card__img" loading="lazy">
-                        <div class="card__body">
-                            <h3 class="card__title">Дитяча школа верхової їзди</h3>
-                            <p class="card__desc">Безпечне навчання дітей від 6 років, поні-клуб, ігрова форма та основи догляду.</p>
-                            <div class="card__footer">
-                                <button class="like-btn" data-liked="false">
-                                    <i class="far fa-heart"></i>
-                                    <span class="like-count">37</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" data-category="riding">
-                        <img src="https://picsum.photos/id/121/400/250" alt="Тренування з конем" class="card__img" loading="lazy">
-                        <div class="card__body">
-                            <h3 class="card__title">Індивідуальні тренування</h3>
-                            <p class="card__desc">Заняття з тренером, постановка техніки, підготовка до змагань будь-якого рівня.</p>
-                            <div class="card__footer">
-                                <button class="like-btn" data-liked="false">
-                                    <i class="far fa-heart"></i>
-                                    <span class="like-count">15</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" data-category="dressage">
-                        <img src="https://picsum.photos/id/174/400/250" alt="Виїздка на арені" class="card__img" loading="lazy">
-                        <div class="card__body">
-                            <h3 class="card__title">Групові заняття з виїздки</h3>
-                            <p class="card__desc">Покращення контролю коня, вивчення піафе, пасажу, робота у групі.</p>
-                            <div class="card__footer">
-                                <button class="like-btn" data-liked="false">
-                                    <i class="far fa-heart"></i>
-                                    <span class="like-count">12</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" data-category="kids">
-                        <img src="https://picsum.photos/id/168/400/250" alt="Поні для дітей" class="card__img" loading="lazy">
-                        <div class="card__body">
-                            <h3 class="card__title">Канікули з конями</h3>
-                            <p class="card__desc">Літні табори, догляд за тваринами, веселі змагання для дітей.</p>
-                            <div class="card__footer">
-                                <button class="like-btn" data-liked="false">
-                                    <i class="far fa-heart"></i>
-                                    <span class="like-count">42</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <div id="loader" class="loader" style="display: none;">
+                    <i class="fas fa-spinner fa-pulse"></i> Завантаження даних...
                 </div>
+                <div class="cards-grid" id="cardsGrid"></div>
             </div>
         </section>
 

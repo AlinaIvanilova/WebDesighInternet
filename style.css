@@ -9,7 +9,7 @@ body {
     line-height: 1.5;
     color: #1e2a2f;
     background-color: #fefaf5;
-    transition: overflow 0.2s; /* 1 */
+    transition: overflow 0.2s;
 }
 
 body.no-scroll {
@@ -213,7 +213,6 @@ body.no-scroll {
     transition: transform 0.2s;
 }
 
-/* Секція hero */
 .cta-hero {
     background: linear-gradient(107deg, #f8e9da 0%, #f2e2cf 100%);
     padding: 70px 0;
@@ -340,7 +339,7 @@ body.no-scroll {
     transition: transform 0.2s, color 0.2s;
 }
 
-.like-btn .like-count {
+.like-count {
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -353,29 +352,33 @@ body.no-scroll {
     color: #e63946;
 }
 
-.like-btn.liked .far {
-    display: none;
-}
-
-.like-btn.liked .fas {
-    display: inline-block;
-}
-
-.like-btn .fas {
-    display: none;
-}
-
-.like-btn.liked .fas {
-    display: inline-block;
-    color: #e63946;
-}
-
-.like-btn .far {
-    display: inline-block;
-}
-
 .card.hidden {
     display: none;
+}
+
+.loader {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7a5a3a;
+    padding: 40px 0;
+    background: #fefaf5;
+    border-radius: 28px;
+    margin: 20px 0;
+}
+
+.loader i {
+    margin-right: 10px;
+}
+
+.error-message {
+    text-align: center;
+    background: #ffefef;
+    border-left: 5px solid #c0392b;
+    padding: 20px;
+    border-radius: 20px;
+    color: #a33c2e;
+    font-weight: 500;
+    margin: 20px 0;
 }
 
 .contact-section {
@@ -400,7 +403,6 @@ body.no-scroll {
     align-items: center;
 }
 
-/* футер */
 .footer {
     background: #2b2118;
     color: #d9c9b4;
