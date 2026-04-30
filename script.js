@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ========== Бургер-меню ==========
     const burgerBtn = document.querySelector('.burger-btn');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeMenuBtn = document.querySelector('.mobile-menu__close');
@@ -6,14 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function toggleMenu(open) {
         if (open === undefined) {
-            mobileMenu.classList.toggle('open');
+            mobileMenu.classList.toggle('is-open');
         } else if (open) {
-            mobileMenu.classList.add('open');
+            mobileMenu.classList.add('is-open');
         } else {
-            mobileMenu.classList.remove('open');
+            mobileMenu.classList.remove('is-open');
         }
 
-        const isOpen = mobileMenu.classList.contains('open');
+        const isOpen = mobileMenu.classList.contains('is-open');
         if (isOpen) {
             document.body.classList.add('no-scroll');
             if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'true');
@@ -39,23 +40,23 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleMenu(false);
             const targetId = link.getAttribute('href');
             if (targetId && targetId !== '#') {
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
+                const target = document.querySelector(targetId);
+                if (target) {
                     e.preventDefault();
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             }
         });
     });
 
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && mobileMenu.classList.contains('open')) {
+        if (window.innerWidth > 767 && mobileMenu.classList.contains('is-open')) {
             toggleMenu(false);
         }
     });
 
+    // ========== Кнопка з анімованим завантаженням ==========
     const actionBtn = document.getElementById('actionBtn');
-    const secondaryBtn = document.getElementById('secondaryActionBtn');
 
     function simulateLoading(button) {
         if (!button || button.disabled) return;
@@ -67,13 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
             button.disabled = false;
             button.style.cursor = 'pointer';
             button.innerHTML = originalHTML;
-            const fakeMessage = document.createElement('span');
-            fakeMessage.textContent = ' ✓ Заявка прийнята!';
-            fakeMessage.style.fontSize = '0.85rem';
-            fakeMessage.style.marginLeft = '12px';
-            fakeMessage.style.color = '#2e7d32';
-            button.parentNode?.appendChild(fakeMessage);
-            setTimeout(() => fakeMessage.remove(), 2000);
+            const msg = document.createElement('span');
+            msg.textContent = ' ✓ Заявка прийнята!';
+            msg.style.fontSize = '0.85rem';
+            msg.style.marginLeft = '12px';
+            msg.style.color = 'var(--color-success)';
+            button.parentNode?.appendChild(msg);
+            setTimeout(() => msg.remove(), 2000);
         }, 1500);
     }
 
@@ -83,60 +84,52 @@ document.addEventListener('DOMContentLoaded', () => {
             simulateLoading(actionBtn);
         });
     }
-    if (secondaryBtn) {
-        secondaryBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            simulateLoading(secondaryBtn);
-        });
-    }
 
+    // ========== Асинхронне завантаження карток ==========
     const cardsGrid = document.getElementById('cardsGrid');
     const loader = document.getElementById('loader');
 
+    // Рендеринг карток
     function renderCards(dataArray) {
         if (!cardsGrid) return;
         cardsGrid.innerHTML = '';
-
         dataArray.forEach(item => {
             const cardHTML = `
-                <div class="card" data-category="${item.category}">
-                    <img src="${item.image}" alt="${item.title}" class="card__img" loading="lazy">
+                <article class="card" data-category="${item.category}">
+                    <img src="${item.image}" alt="${escapeHtml(item.title)}" class="card__img" loading="lazy">
                     <div class="card__body">
                         <h3 class="card__title">${escapeHtml(item.title)}</h3>
                         <p class="card__desc">${escapeHtml(item.description)}</p>
+                        <p class="card__price">${escapeHtml(item.price)}</p>
                         <div class="card__footer">
-                            <button class="like-btn" data-liked="false">
+                            <button class="like-btn" data-liked="false" aria-label="Лайк">
                                 <i class="far fa-heart"></i>
                                 <span class="like-count">${item.likes}</span>
                             </button>
                         </div>
                     </div>
-                </div>
+                </article>
             `;
             cardsGrid.insertAdjacentHTML('beforeend', cardHTML);
         });
     }
 
+    // Екранування HTML
     function escapeHtml(str) {
         if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
+        return str.replace(/[&<>]/g, (m) => {
             if (m === '&') return '&amp;';
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
 
-    function showError(message) {
-        if (!cardsGrid) return;
-        cardsGrid.innerHTML = `<div class="error-message">⚠️ ${message}</div>`;
-    }
-
-    async function loadAndRender() {
-        if (loader) loader.style.display = 'flex';
-        if (cardsGrid) cardsGrid.innerHTML = ''; // очищаємо попередні дані
+    // Головна асинхронна функція (відповідає вимозі async function fetchData())
+    async function fetchData() {
+        // Показуємо лоадер
+        if (loader) loader.style.display = 'block';
+        if (cardsGrid) cardsGrid.innerHTML = '';   // очищення контейнера
 
         try {
             const response = await fetch('data.json');
@@ -152,26 +145,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             renderCards(data);
+            // Активуємо фільтр "всі"
             filterCards('all');
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            filterBtns.forEach(btn => btn.classList.remove('active'));
             const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(b => b.classList.remove('active'));
             if (allBtn) allBtn.classList.add('active');
 
         } catch (error) {
             console.error('Помилка завантаження:', error);
-            showError('Вибачте, дані тимчасово недоступні. Спробуйте оновити сторінку.');
+            if (cardsGrid) {
+                cardsGrid.innerHTML = `<div class="error-message">⚠️ Вибачте, дані тимчасово недоступні. Спробуйте оновити сторінку.</div>`;
+            }
         } finally {
+            // Ховаємо лоадер у будь-якому разі
             if (loader) loader.style.display = 'none';
+            // Поновлюємо слухачі фільтрів (бо кнопки залишились тими ж)
             refreshFilterListener();
         }
     }
 
+    // ========== Фільтрація ==========
     function filterCards(category) {
-        const allCards = document.querySelectorAll('.card');
-        allCards.forEach(card => {
-            const cardCategory = card.getAttribute('data-category');
-            if (category === 'all' || cardCategory === category) {
+        document.querySelectorAll('.card').forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (category === 'all' || cat === category) {
                 card.classList.remove('hidden');
             } else {
                 card.classList.add('hidden');
@@ -195,49 +193,56 @@ document.addEventListener('DOMContentLoaded', () => {
         filterCards(filterValue);
     }
 
+    // Делегування подій для лайків
     if (cardsGrid) {
         cardsGrid.addEventListener('click', (e) => {
             const likeBtn = e.target.closest('.like-btn');
             if (!likeBtn) return;
-
             const icon = likeBtn.querySelector('i');
             const countSpan = likeBtn.querySelector('.like-count');
             if (!icon || !countSpan) return;
 
             const isLiked = likeBtn.classList.contains('liked');
-            if (isLiked) {
-                likeBtn.classList.remove('liked');
-                likeBtn.setAttribute('data-liked', 'false');
-                icon.classList.remove('fas');
-                icon.classList.add('far');
-                let current = parseInt(countSpan.innerText, 10) || 0;
-                countSpan.innerText = Math.max(0, current - 1);
-            } else {
-                likeBtn.classList.add('liked');
-                likeBtn.setAttribute('data-liked', 'true');
+
+            // Використовуємо classList.toggle() для синхронізації стану
+            likeBtn.classList.toggle('liked');
+            const nowLiked = likeBtn.classList.contains('liked');
+            likeBtn.setAttribute('data-liked', nowLiked ? 'true' : 'false');
+
+            // Змінюємо іконку
+            if (nowLiked) {
                 icon.classList.remove('far');
                 icon.classList.add('fas');
-                let current = parseInt(countSpan.innerText, 10) || 0;
-                countSpan.innerText = current + 1;
+            } else {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
             }
 
+            // Оновлюємо лічильник
+            let currentCount = parseInt(countSpan.innerText, 10) || 0;
+            if (nowLiked) {
+                currentCount += 1;
+            } else {
+                currentCount = Math.max(0, currentCount - 1);
+            }
+            countSpan.innerText = currentCount;
+
+            // Маленька анімація
             icon.style.transform = 'scale(1.3)';
-            setTimeout(() => {
-                icon.style.transform = '';
-            }, 150);
+            setTimeout(() => { icon.style.transform = ''; }, 150);
         });
     }
 
-    const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
-    allAnchorLinks.forEach(anchor => {
+    // ========== Плавний скрол для якірних посилань ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
             if (targetId && targetId !== '#') {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
+                const target = document.querySelector(targetId);
+                if (target) {
                     e.preventDefault();
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                    if (mobileMenu.classList.contains('open')) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (mobileMenu.classList.contains('is-open')) {
                         toggleMenu(false);
                     }
                 }
@@ -245,5 +250,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    loadAndRender();
+    // ========== Обробка контактної форми ==========
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (contactForm.checkValidity()) {
+                contactForm.style.display = 'none';
+                if (formSuccess) formSuccess.style.display = 'block';
+            } else {
+                contactForm.reportValidity();
+            }
+        });
+    }
+
+    // Запуск завантаження даних
+    fetchData();
 });

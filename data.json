@@ -3,48 +3,54 @@
     "id": 1,
     "title": "Прогулянка верхи",
     "description": "Мальовничі маршрути лісом та полями. Для новачків та досвідчених вершників.",
-    "image": "https://picsum.photos/id/145/400/250",
+    "image": "https://loremflickr.com/400/250/horse",
     "category": "riding",
-    "likes": 24
+    "likes": 24,
+    "price": "від 500 грн"
   },
   {
     "id": 2,
     "title": "Виїздка (Дресура)",
-    "description": "Складні елементи, робота в манежі, підготовка до змагань. Індивідуальні тренування.",
-    "image": "https://picsum.photos/id/224/400/250",
+    "description": "Складні елементи, робота в манежі, підготовка до змагань.",
+    "image": "https://loremflickr.com/400/250/dressage,horse",
     "category": "dressage",
-    "likes": 18
+    "likes": 18,
+    "price": "від 800 грн"
   },
   {
     "id": 3,
     "title": "Дитяча школа верхової їзди",
-    "description": "Безпечне навчання дітей від 6 років, поні-клуб, ігрова форма та основи догляду.",
-    "image": "https://picsum.photos/id/20/400/250",
+    "description": "Навчання дітей від 6 років, поні-клуб, ігрова форма.",
+    "image": "https://loremflickr.com/400/250/pony,kids,horse",
     "category": "kids",
-    "likes": 37
+    "likes": 37,
+    "price": "від 400 грн"
   },
   {
     "id": 4,
     "title": "Індивідуальні тренування",
-    "description": "Заняття з тренером, постановка техніки, підготовка до змагань будь-якого рівня.",
-    "image": "https://picsum.photos/id/121/400/250",
+    "description": "Персональні заняття з тренером, постановка техніки.",
+    "image": "https://loremflickr.com/400/250/horse,training",
     "category": "riding",
-    "likes": 15
+    "likes": 15,
+    "price": "від 700 грн"
   },
   {
     "id": 5,
     "title": "Групові заняття з виїздки",
-    "description": "Покращення контролю коня, вивчення піафе, пасажу, робота у групі.",
-    "image": "https://picsum.photos/id/174/400/250",
+    "description": "Покращення контролю коня, робота у групі.",
+    "image": "https://loremflickr.com/400/250/horse,arena",
     "category": "dressage",
-    "likes": 12
+    "likes": 12,
+    "price": "від 600 грн"
   },
   {
     "id": 6,
     "title": "Канікули з конями",
-    "description": "Літні табори, догляд за тваринами, веселі змагання для дітей.",
-    "image": "https://picsum.photos/id/168/400/250",
+    "description": "Літні табори, догляд за тваринами, веселі змагання.",
+    "image": "https://loremflickr.com/400/250/horse,camp",
     "category": "kids",
-    "likes": 42
+    "likes": 42,
+    "price": "від 3500 грн"
   }
 ]

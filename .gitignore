@@ -1,0 +1,32 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+. Sublime/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Node modules (if any in future)
+node_modules/
+
+# Build / dependency directories (not used yet)
+dist/
+build/
+.cache/
+
+# Environment / config files
+.env
+.env.local
+
+# Ignore local backups
+*.bak
+*.orig
