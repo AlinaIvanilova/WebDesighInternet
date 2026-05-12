@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Прогулянка верхи",
     "description": "Мальовничі маршрути лісом та полями. Для новачків та досвідчених вершників.",
-    "image": "https://loremflickr.com/400/250/horse",
+    "image": "images/прогулянкаВерхи.jpg",
     "category": "riding",
     "likes": 24,
     "price": "від 500 грн"
@@ -12,7 +12,7 @@
     "id": 2,
     "title": "Виїздка (Дресура)",
     "description": "Складні елементи, робота в манежі, підготовка до змагань.",
-    "image": "https://loremflickr.com/400/250/dressage,horse",
+    "image": "images/виїздкаДресура.jpg",
     "category": "dressage",
     "likes": 18,
     "price": "від 800 грн"
@@ -21,7 +21,7 @@
     "id": 3,
     "title": "Дитяча школа верхової їзди",
     "description": "Навчання дітей від 6 років, поні-клуб, ігрова форма.",
-    "image": "https://loremflickr.com/400/250/pony,kids,horse",
+    "image": "images/дитячаВиїздка.jpg",
     "category": "kids",
     "likes": 37,
     "price": "від 400 грн"
@@ -30,7 +30,7 @@
     "id": 4,
     "title": "Індивідуальні тренування",
     "description": "Персональні заняття з тренером, постановка техніки.",
-    "image": "https://loremflickr.com/400/250/horse,training",
+    "image": "images/ІндивідуальніТренування.jpg",
     "category": "riding",
     "likes": 15,
     "price": "від 700 грн"
@@ -39,7 +39,7 @@
     "id": 5,
     "title": "Групові заняття з виїздки",
     "description": "Покращення контролю коня, робота у групі.",
-    "image": "https://loremflickr.com/400/250/horse,arena",
+    "image": "images/груповіЗаняття.jpg",
     "category": "dressage",
     "likes": 12,
     "price": "від 600 грн"
@@ -48,7 +48,7 @@
     "id": 6,
     "title": "Канікули з конями",
     "description": "Літні табори, догляд за тваринами, веселі змагання.",
-    "image": "https://loremflickr.com/400/250/horse,camp",
+    "image": "images/ЛітніЗаняття.jpg",
     "category": "kids",
     "likes": 42,
     "price": "від 3500 грн"
